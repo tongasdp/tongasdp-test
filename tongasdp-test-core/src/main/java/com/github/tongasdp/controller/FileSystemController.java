@@ -1,6 +1,8 @@
 package com.github.tongasdp.controller;
 
 import org.javaweb.utils.FileUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +25,13 @@ import static org.javaweb.utils.HttpServletRequestUtils.getDocumentRoot;
 @Controller
 @RequestMapping("/FileSystem/")
 public class FileSystemController {
+
+	@ResponseBody
+	@RequestMapping("/ReadFile.do")
+	public ResponseEntity<byte[]> readFile(String file) throws IOException {
+		byte[] content = FileUtils.readFileToByteArray(new File(file));
+		return new ResponseEntity<>(content, HttpStatus.OK);
+	}
 
 	@ResponseBody
 	@RequestMapping("/ReadFile.php")
