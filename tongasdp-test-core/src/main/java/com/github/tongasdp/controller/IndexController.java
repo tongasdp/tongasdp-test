@@ -48,7 +48,7 @@ public class IndexController {
 	}
 
 	@RequestMapping("/SpELVul.php")
-	public String spELVul(int id, HttpServletRequest request, HttpServletResponse response) {
+	public String spELVul(int id, HttpServletRequest request) {
 		request.setAttribute("id", id);
 
 		return "/spel.html";
