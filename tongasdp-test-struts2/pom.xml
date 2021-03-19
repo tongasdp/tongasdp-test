@@ -77,8 +77,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.anbai.lingxe</groupId>
-            <artifactId>lingxe-test-core</artifactId>
+            <groupId>com.github.tongasdp</groupId>
+            <artifactId>tongasdp-test-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 

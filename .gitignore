@@ -1,14 +1,8 @@
 /**/target/
 !.mvn/wrapper/maven-wrapper.jar
 dependency-reduced-pom.xml
-/lingxe/**/*.jar
-/lingxe/config/apps
-/asdp/**/*.jar
-/asdp/config/apps
 *.class
 *.log
-access-log*.txt
-
 ### STS ###
 .apt_generated
 .classpath
@@ -34,8 +28,3 @@ access-log*.txt
 
 ### VS Code ###
 .vscode/
-
-asdp/
-tongasdp.zip
-lingxe-java-agent.zip
-lingxe-java-agent.zip
