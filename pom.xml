@@ -12,21 +12,25 @@
 
     <properties>
         <junit>4.12</junit>
+        <asm.version>9.0</asm.version>
         <java.version>1.7</java.version>
         <jstl.version>1.2</jstl.version>
         <mail.version>1.4.7</mail.version>
         <dom4j.version>1.6.1</dom4j.version>
         <jsoup.version>1.12.2</jsoup.version>
-        <druid.version>1.1.21</druid.version>
+        <druid.version>1.1.24</druid.version>
         <struts.version>2.1.8</struts.version>
         <groovy.version>2.3.9</groovy.version>
+        <xerces.version>2.4.0</xerces.version>
         <okhttp.version>2.7.5</okhttp.version>
         <jsp-api.version>2.2</jsp-api.version>
+        <tomcat.version>8.5.31</tomcat.version>
         <okhttp3.version>4.4.1</okhttp3.version>
         <taglibs.version>1.1.2</taglibs.version>
         <json-lib.version>2.4</json-lib.version>
         <jackson.version>2.9.0</jackson.version>
         <javaweb.version>2.0.0</javaweb.version>
+        <logback.version>1.2.3</logback.version>
         <xstream.version>1.4.10</xstream.version>
         <HikariCP.version>3.4.1</HikariCP.version>
         <mvel2.version>2.4.0.Final</mvel2.version>

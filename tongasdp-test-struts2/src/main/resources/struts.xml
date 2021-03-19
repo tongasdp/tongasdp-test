@@ -11,6 +11,9 @@
     <constant name="struts.convention.exclude.parentClassLoader" value="false"/>
 
     <package name="default" namespace="/" extends="struts-default">
+        <action name="fileUpload" class="com.github.tongasdp.action.FileUploadAction">
+            <interceptor-ref name="fileUploadStack"/>
+        </action>
     </package>
 
 </struts>

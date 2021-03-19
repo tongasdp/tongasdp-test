@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>tongasdp-test-struts2</artifactId>
     <packaging>war</packaging>
-    <description>TongASDP SpringBoot漏洞演示环境</description>
+    <description>TongASDP Struts2漏洞演示环境</description>
 
     <dependencies>
         <dependency>
@@ -38,6 +38,18 @@
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-convention-plugin</artifactId>
             <version>${struts.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.ow2.asm</groupId>
+                    <artifactId>asm</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-commons</artifactId>
+            <version>${asm.version}</version>
         </dependency>
 
         <dependency>
@@ -65,8 +77,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.tongasdp</groupId>
-            <artifactId>tongasdp-test-core</artifactId>
+            <groupId>com.anbai.lingxe</groupId>
+            <artifactId>lingxe-test-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -89,6 +101,33 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.13</version>
+        </dependency>
+
     </dependencies>
 
     <build>

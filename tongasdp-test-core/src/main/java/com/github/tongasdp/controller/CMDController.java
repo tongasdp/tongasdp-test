@@ -5,9 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 @Controller
 @RequestMapping("/CMD/")
 public class CMDController {
