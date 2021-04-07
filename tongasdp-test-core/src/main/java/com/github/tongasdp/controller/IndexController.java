@@ -9,12 +9,12 @@ import com.github.tongasdp.entity.SysUser;
 import org.javaweb.utils.FileUtils;
 import org.javaweb.utils.HttpServletResponseUtils;
 import org.javaweb.utils.StringUtils;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static com.github.tongasdp.commons.Constants.SESSION_USER;
 import static org.javaweb.utils.HttpServletRequestUtils.getDocumentRoot;
@@ -42,13 +43,18 @@ public class IndexController {
 	@Resource
 	private SysArticleDAO sysArticleDAO;
 
-	@RequestMapping("/")
+	@Resource
+	private JdbcTemplate jdbcTemplate;
+
+	private static final AtomicLong INDEX = new AtomicLong();
+
+	@RequestMapping(value = {"/", "/index.asp"})
 	public String indexPage() {
 		return "/index.html";
 	}
 
 	@RequestMapping("/SpELVul.php")
-	public String spELVul(int id, HttpServletRequest request) {
+	public String spELVul(int id, HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("id", id);
 
 		return "/spel.html";
@@ -121,6 +127,23 @@ public class IndexController {
 
 		session.removeAttribute(SESSION_USER);
 		response.sendRedirect(request.getContextPath() + "/index.do");
+	}
+
+	@ResponseBody
+	@RequestMapping("/getUserByName.do")
+	public Map<String, Object> getUserByName(String username) {
+		// 存在SQL注入的查询语句
+		String sql = "select * from sys_user where id = 1 and username = '" + username + "' " +
+				"and password != '" + StringUtils.getCurrentTime() + "'";
+
+		// 查询数据库记录
+		Map<String, Object> dataMap = jdbcTemplate.queryForMap(sql);
+
+		if (dataMap != null) {
+			System.out.println(INDEX.addAndGet(1));
+		}
+
+		return dataMap;
 	}
 
 	@ResponseBody

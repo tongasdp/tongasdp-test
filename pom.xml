@@ -67,6 +67,8 @@
         <module>tongasdp-test-core</module>
         <module>tongasdp-test-springboot</module>
         <module>tongasdp-test-struts2</module>
+        <module>tongasdp-test-servlet</module>
+        <module>tongasdp-test-jakarta-servlet</module>
     </modules>
 
 </project>

@@ -16,7 +16,7 @@ public class SSRFController {
 	public ResponseEntity<byte[]> ssrf(String url) throws Exception {
 		byte[] bytes = IOUtils.toByteArray(new URL(url).openConnection().getInputStream());
 
-		return new ResponseEntity<>(bytes, HttpStatus.OK);
+		return new ResponseEntity<byte[]>(bytes, HttpStatus.OK);
 	}
 
 }

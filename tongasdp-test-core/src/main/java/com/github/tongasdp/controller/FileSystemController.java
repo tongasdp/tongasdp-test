@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.javaweb.utils.HttpServletRequestUtils.getDocumentRoot;
 
@@ -30,7 +27,7 @@ public class FileSystemController {
 	@RequestMapping("/ReadFile.do")
 	public ResponseEntity<byte[]> readFile(String file) throws IOException {
 		byte[] content = FileUtils.readFileToByteArray(new File(file));
-		return new ResponseEntity<>(content, HttpStatus.OK);
+		return new ResponseEntity<byte[]>(content, HttpStatus.OK);
 	}
 
 	@ResponseBody
@@ -42,13 +39,13 @@ public class FileSystemController {
 		return "<pre>" + content + "</pre>";
 	}
 
-	@ResponseBody
-	@RequestMapping("/ReadFileNIO.php")
-	public String readFileNIO(String file, HttpServletRequest request) throws IOException {
-		byte[] bytes = Files.readAllBytes(Paths.get(getDocumentRoot(request) + file));
-
-		return "<pre>" + new String(bytes) + "</pre>";
-	}
+//	@ResponseBody
+//	@RequestMapping("/ReadFileNIO.php")
+//	public String readFileNIO(String file, HttpServletRequest request) throws IOException {
+//		byte[] bytes = Files.readAllBytes(Paths.get(getDocumentRoot(request) + file));
+//
+//		return "<pre>" + new String(bytes) + "</pre>";
+//	}
 
 	@ResponseBody
 	@RequestMapping("/WriteFile.php")
@@ -82,13 +79,13 @@ public class FileSystemController {
 		return "文件" + deleteFile + "删除:" + (((Boolean) m2.invoke(fs, deleteFile)) ? "成功!" : "失败!");
 	}
 
-	@ResponseBody
-	@RequestMapping("/CopyFileNIO.php")
-	public String copyFile(String source, String dest) throws IOException {
-		Path path = Files.copy(Paths.get(source), Paths.get(dest));
-
-		return "文件:" + path + "复制成功!";
-	}
+//	@ResponseBody
+//	@RequestMapping("/CopyFileNIO.php")
+//	public String copyFile(String source, String dest) throws IOException {
+//		Path path = Files.copy(Paths.get(source), Paths.get(dest));
+//
+//		return "文件:" + path + "复制成功!";
+//	}
 
 	@ResponseBody
 	@RequestMapping("/RenameFile.php")
